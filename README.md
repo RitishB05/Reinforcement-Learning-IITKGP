@@ -3,7 +3,7 @@
 
 This repository contains implementations of RL algorithms, covering both classical multi-armed bandit problems and Deep Reinforcement Learning methods.
 
-## Repository Index (Jist)
+## Repository Index 
 ### [Multi-Armed Bandits: Exploration-Exploitation Strategies](./01-Multi-Armed-Bandits)
 An in-depth study of the fundamental exploration-exploitation trade-off using classical Bandit algorithms.
 
