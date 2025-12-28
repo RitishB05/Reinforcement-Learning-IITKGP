@@ -1,17 +1,17 @@
 # Deep Q-Networks (DQN) for Discrete Control
 
-## Overview
-Implementing a stable DQN agent to solve the Gymnasium CartPole-v1 control task.
+## Project Overview
+Implementing a stable DQN agent to solve the Gymnasium CartPole-v1 control task using PyTorch.
 
-## Mathematical & Technical Foundations
-- Bellman Optimality: Approximating the Q-value function using Neural Networks.
-- Target Networks: Using a quasi-static network to reduce target oscillations and ensure stability.
-- MSE Loss: Minimizing the Temporal Difference (TD) error.
+## Mathematical Foundations
+- Bellman Optimality: Approximating the optimal action-value function Q*(s, a).
+- Stability Mechanisms: Implementation of Experience Replay and Target Networks to reduce temporal correlation and target oscillation.
+- Loss Function: Minimizing Mean Squared Error (MSE) between the predicted Q-values and Temporal Difference (TD) targets.
 
 ## Implementation Details
-- Experience Replay: Utilizing a circular buffer to remove temporal correlations in transitions.
-- Epsilon-Decay: Annealing the exploration rate from 1.0 to 0.01 for better optimization.
-- Framework: Neural network implementation using PyTorch with Adam optimizer.
+- Experience Replay: Circular buffer for uniform sampling of historical transitions.
+- Target Network: A quasi-static network updated periodically to stabilize the learning objective.
+- Epsilon-Decay: Strategy for smooth transition from exploration to exploitation.
 
-## Technologies
-- PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib
+## Technologies Used
+- Python, PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib

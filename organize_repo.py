@@ -5,32 +5,28 @@ import shutil
 structure = {
     "01-Multi-Armed-Bandits": {
         "files": ["Multi_Armed_Bandits_Exploration_Strategies.py", "Multi_Armed_Bandits_Exploration_Strategies.ipynb"],
-        "title": "Multi-Armed Bandits: Exploration-Exploitation Trade-off",
-        "desc": "A study on regret minimization in stochastic environments using classical bandit algorithms.",
-        "mathematics": [
-            "Regret Analysis: Theoretical comparison of cumulative regret bounds.",
-            "Upper Confidence Bound (UCB): Implementing confidence intervals using the Hoeffding Inequality.",
-            "Epsilon-Greedy: Balancing exploration vs. exploitation through a probability parameter."
+        "title": "Multi-Armed Bandits: Exploration-Exploitation Strategies",
+        "desc": "An in-depth study of the fundamental exploration-exploitation trade-off using classical Bandit algorithms.",
+        "math": [
+            "Regret Bounds: Comparison of cumulative regret across epsilon-greedy, UCB, and Thompson Sampling.",
+            "UCB Algorithm: Implementing Upper Confidence Bounds using Hoeffding's Inequality to minimize regret.",
+            "Thompson Sampling: Bayesian approach using Beta distributions for optimal action selection."
         ],
-        "highlights": [
-            "Comparative study of Epsilon-Greedy, UCB, and Thompson Sampling.",
-            "Simulation across stationary Gaussian reward distributions.",
-            "Analysis of convergence rates based on Cumulative Regret curves."
-        ]
+        "analysis": "Evaluation focused on stationary vs. non-stationary reward distributions, demonstrating how the agent adapts its internal value estimates over 10,000+ iterations."
     },
     "02-Deep-Q-Networks": {
         "files": ["Deep_Q_Learning_CartPole_PyTorch.py", "Deep_Q_Learning_CartPole_PyTorch.ipynb"],
         "title": "Deep Q-Networks (DQN) for Discrete Control",
-        "desc": "Implementing a stable DQN agent to solve the Gymnasium CartPole-v1 control task.",
-        "mathematics": [
-            "Bellman Optimality: Approximating the Q-value function using Neural Networks.",
-            "Target Networks: Using a quasi-static network to reduce target oscillations and ensure stability.",
-            "MSE Loss: Minimizing the Temporal Difference (TD) error."
+        "desc": "Implementing a stable DQN agent to solve the Gymnasium CartPole-v1 control task using PyTorch.",
+        "math": [
+            "Bellman Optimality: Approximating the optimal action-value function Q*(s, a).",
+            "Stability Mechanisms: Implementation of Experience Replay and Target Networks to reduce temporal correlation and target oscillation.",
+            "Loss Function: Minimizing Mean Squared Error (MSE) between the predicted Q-values and Temporal Difference (TD) targets."
         ],
         "architecture": [
-            "Experience Replay: Utilizing a circular buffer to remove temporal correlations in transitions.",
-            "Epsilon-Decay: Annealing the exploration rate from 1.0 to 0.01 for better optimization.",
-            "Framework: Neural network implementation using PyTorch with Adam optimizer."
+            "Experience Replay: Circular buffer for uniform sampling of historical transitions.",
+            "Target Network: A quasi-static network updated periodically to stabilize the learning objective.",
+            "Epsilon-Decay: Strategy for smooth transition from exploration to exploitation."
         ]
     }
 }
@@ -45,25 +41,28 @@ for folder, data in structure.items():
     # 2. Detailed Sub-folder README
     with open(os.path.join(folder, "README.md"), "w") as f:
         f.write(f"# {data['title']}\n\n")
-        f.write(f"## Overview\n{data['desc']}\n\n")
+        f.write(f"## Project Overview\n{data['desc']}\n\n")
         
-        f.write("## Mathematical & Technical Foundations\n")
-        if "mathematics" in data:
-            for math in data['mathematics']: f.write(f"- {math}\n")
+        f.write("## Mathematical Foundations\n")
+        for m in data['math']: f.write(f"- {m}\n")
         
         f.write("\n## Implementation Details\n")
-        details = data.get("highlights") or data.get("architecture")
-        for item in details: f.write(f"- {item}\n")
+        details = data.get("analysis") or data.get("architecture")
+        if isinstance(details, list):
+            for item in details: f.write(f"- {item}\n")
+        else:
+            f.write(f"{details}\n")
         
-        f.write("\n## Technologies\n- PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib\n")
+        f.write("\n## Technologies Used\n- Python, PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib\n")
 
-# 3. Jist/Main README
+# 3. Global README (The Jist)
 with open("README.md", "w") as f:
     f.write("# Reinforcement Learning Labs\n")
     f.write("### M.Tech AI | IIT Kharagpur\n\n")
-    f.write("This repository contains implementations of RL algorithms, covering fundamental bandit problems and Deep Q-Networks.\n\n")
-    f.write("## Project Jist\n")
+    f.write("This repository contains implementations of RL algorithms, covering both classical multi-armed bandit problems and Deep Reinforcement Learning methods.\n\n")
+    f.write("## Repository Index (Jist)\n")
     for folder in sorted(structure.keys()):
-        f.write(f"- **[{structure[folder]['title']}](./{folder})**: {structure[folder]['desc']}\n")
+        f.write(f"### [{structure[folder]['title']}](./{folder})\n")
+        f.write(f"{structure[folder]['desc']}\n\n")
 
-print("RL Labs organized with high-detail documentation!")
+print("RL repository structured successfully!")

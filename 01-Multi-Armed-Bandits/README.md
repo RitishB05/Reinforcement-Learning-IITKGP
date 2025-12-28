@@ -1,17 +1,15 @@
-# Multi-Armed Bandits: Exploration-Exploitation Trade-off
+# Multi-Armed Bandits: Exploration-Exploitation Strategies
 
-## Overview
-A study on regret minimization in stochastic environments using classical bandit algorithms.
+## Project Overview
+An in-depth study of the fundamental exploration-exploitation trade-off using classical Bandit algorithms.
 
-## Mathematical & Technical Foundations
-- Regret Analysis: Theoretical comparison of cumulative regret bounds.
-- Upper Confidence Bound (UCB): Implementing confidence intervals using the Hoeffding Inequality.
-- Epsilon-Greedy: Balancing exploration vs. exploitation through a probability parameter.
+## Mathematical Foundations
+- Regret Bounds: Comparison of cumulative regret across epsilon-greedy, UCB, and Thompson Sampling.
+- UCB Algorithm: Implementing Upper Confidence Bounds using Hoeffding's Inequality to minimize regret.
+- Thompson Sampling: Bayesian approach using Beta distributions for optimal action selection.
 
 ## Implementation Details
-- Comparative study of Epsilon-Greedy, UCB, and Thompson Sampling.
-- Simulation across stationary Gaussian reward distributions.
-- Analysis of convergence rates based on Cumulative Regret curves.
+Evaluation focused on stationary vs. non-stationary reward distributions, demonstrating how the agent adapts its internal value estimates over 10,000+ iterations.
 
-## Technologies
-- PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib
+## Technologies Used
+- Python, PyTorch, Gymnasium (OpenAI Gym), NumPy, Matplotlib
